@@ -1,0 +1,16 @@
+config:
+  name: "1234"
+  variables:
+    hostnamee: host_name_test
+
+testcases:
+  singleApi:
+    testcase: testcases/loginandgetorder.yml
+    variables:
+      version: 4.1.2
+      hostname: $hostnamee
+
+#  getorder:
+#    testcase: testcases/getorder.yml
+#    validate:
+#      - equals: ["content.errNo", 0]

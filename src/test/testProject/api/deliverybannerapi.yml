@@ -1,0 +1,31 @@
+variables:
+    planId: 32
+    ban: banner
+request:
+    url: https://api.ydl.com/api/delivery/$ban
+    method: GET
+    params:
+        planId: $planId
+        accessToken:
+        uid:
+        ts: 1576224282
+        osBuild: OS105,7.1.1,4.0.13
+        isFromApp: 1
+        version: 4.0.13
+        ffrom: android_chuizi
+    headers:
+        Host: api.ydl.com
+        Connection: keep-alive
+        Upgrade-Insecure-Requests: "1"
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3741.400 QQBrowser/10.5.3863.400
+        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+validate:
+    - equals: ["content.code", "200"]
+    - equals: ["status_code", 200]
+    - equals: ["content.data.0.title", "大咖频道"]
+    - equals: ["content.msg", "成功"]
+setup_hooks:
+    - ${setup_hooks($request)}
+    - ${setup_hooks2($request)}
+#teardown_hooks:
+#    - ${teardown_hooks($response, $n_secs)}

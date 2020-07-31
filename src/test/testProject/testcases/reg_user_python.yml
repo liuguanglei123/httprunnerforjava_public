@@ -1,0 +1,6 @@
+- config:
+    name: "reg user"
+
+- test:
+    name: reg_user
+    api: api/reg_user_python.yml

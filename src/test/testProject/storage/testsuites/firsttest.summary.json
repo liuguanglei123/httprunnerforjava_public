@@ -1,0 +1,63 @@
+{
+	"details":[
+		{
+			"stat":{
+				"total":1,
+				"failures":1,
+				"successes":0,
+				"errors":0,
+				"skipped":0
+			},
+			"records":[
+				{
+					"attachment":"\r\ncom.hrun.exceptions.HrunBizException: response为空\r\n\tat com.hrun.exceptions.HrunExceptionFactory.create(HrunExceptionFactory.java:6)\r\n\tat com.hrun.Runner._run_test(Runner.java:170)\r\n\tat com.hrun.Runner.run_test(Runner.java:92)\r\n\tat com.hrun.component.RunTestCls.runTest(RunTestCls.java:24)\r\n\tat com.hrun.component.testcase.TestCaseRun._callTestMethod(TestCaseRun.java:48)\r\n\tat com.hrun.component.testcase.TestCaseRun.run(TestCaseRun.java:36)\r\n\tat com.hrun.component.testsuite.TestSuiteRun.run(TestSuiteRun.java:39)\r\n\tat com.hrun.TextTestRunner.run(TextTestRunner.java:27)\r\n\tat com.hrun.HttpRunner._run_suite(HttpRunner.java:188)\r\n\tat com.hrun.HttpRunner.run_tests(HttpRunner.java:117)\r\n\tat com.hrun.HttpRunner.run_path(HttpRunner.java:81)\r\n\tat com.hrun.HttpRunner.run_path(HttpRunner.java:65)\r\n\tat com.hrun.App.main(App.java:78)\r\nCaused by: java.lang.Throwable\r\n\tat com.hrun.exceptions.HrunBizException.<init>(HrunBizException.java:18)\r\n\t... 13 more\r\n\r\n",
+					"name":"reg_user",
+					"meta_datas_expanded":[
+						{
+							"data":[],
+							"name":"reg_user",
+							"stat":{
+								"content_size":0,
+								"elapsed_ms":334,
+								"response_time_ms":334
+							}
+						}
+					],
+					"meta_datas":{"$ref":"$.details[0].records[0].meta\\_datas\\_expanded[0]"},
+					"response_time":334,
+					"status":"failure"
+				}
+			],
+			"success":false,
+			"name":{
+				"realValue":"singleApi"
+			},
+			"time":{
+				"duration":0.363,
+				"start_at":1592373811251
+			}
+		}
+	],
+	"platform":{
+		"java_version":"Java 1.8.0_201",
+		"httprunner_version":"2.2.6",
+		"platform":"Windows 10"
+	},
+	"success":false,
+	"testcasesStat":{
+		"fail":1,
+		"total":1,
+		"success":0
+	},
+	"teststepsStat":{
+		"total":1,
+		"failures":1,
+		"successes":0,
+		"errors":0,
+		"skipped":0
+	},
+	"time":{
+		"duration":0.363,
+		"start_at":1592373811251
+	}
+}

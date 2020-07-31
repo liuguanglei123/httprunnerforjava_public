@@ -1,0 +1,18 @@
+- config:
+    name: "123456"
+
+- test:
+    name: loginandgetorder
+    testcase: testcases/loginandgetorder_python.yml
+    extract:
+        - phone
+        - passwd
+    setup_hooks:
+      - ${setup_testcase()}
+
+- test:
+      name: getorder
+      api: api/getorder_python.yml
+      variables:
+        uid: "111"
+

@@ -1,0 +1,13 @@
+config:
+    name: ydltestsuite
+    variables:
+        isFromApp: "0"
+        version: 4.0.5
+    base_url: "https://api.ydl.com/"
+
+testcases:
+    ydltestcase:
+        testcase: testcases/ydltestcases.yml
+        variables:
+          version: 4.1.2
+

@@ -1,0 +1,13 @@
+- test:
+    api: api/deliverybannerapi.yml
+    name: deliverybannerapi
+    variables:
+      n_secs: 1
+    validate:
+      - equals: ["status_code", 200]
+
+- test:
+    api: api/getMaxAvailable.yml
+    name: getMaxAvailable
+    variables:
+      n_secs: 1

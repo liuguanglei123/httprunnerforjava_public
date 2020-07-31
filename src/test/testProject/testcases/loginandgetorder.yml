@@ -1,0 +1,17 @@
+- config:
+    name: "123456"
+    export:
+        - phone
+        - passwd
+
+- test:
+    name: login
+    api: api/login_m.yml
+    extract:
+        - passwd: content.data.passwd
+    validate:
+      - equals: ["content.code", 0]
+
+- test:
+    name: getorder
+    api: api/getorder.yml

@@ -1,0 +1,24 @@
+request:
+  url: https://api.ydl.com/api/user/login_pwd
+  method: POST
+  json:
+    country_code: 0086
+    phoneNumber: 15063360912
+    passwd: 29da36422586a48d7e30499537c02f46
+    type: 2
+  headers:
+    ffrom: android_zhuzhan
+    isFromApp: 1
+    version: 4.0.50
+    osBuild: deltainno,DT1901A,9,4.0.50
+    osType: 2
+    appName: yidianling
+    accessToken: ""
+    uid: ""
+    Content-Type: application/json; charset=utf-8
+    Host: api.ydl.com
+    Accept-Encoding: gzip
+    User-Agent: okhttp/3.12.2
+validate:
+  - equals: ["status_code", 200]
+

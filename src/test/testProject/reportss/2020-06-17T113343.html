@@ -1,0 +1,437 @@
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> - TestReport</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0 auto;
+      width: 960px;
+    }
+    #summary {
+      width: 960px;
+      margin-bottom: 20px;
+    }
+    #summary th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    #summary td {
+      background-color: lightblue;
+      text-align: center;
+      padding: 4px 8px;
+    }
+    .details {
+      width: 960px;
+      margin-bottom: 20px;
+    }
+    .details th {
+      background-color: skyblue;
+      padding: 5px 12px;
+    }
+    .details tr .passed {
+      background-color: lightgreen;
+    }
+    .details tr .failed {
+      background-color: red;
+    }
+    .details tr .unchecked {
+      background-color: gray;
+    }
+    .details td {
+      background-color: lightblue;
+      padding: 5px 12px;
+    }
+    .details .detail {
+      background-color: lightgrey;
+      font-size: smaller;
+      padding: 5px 10px;
+      line-height: 20px;
+      text-align: left;
+    }
+    .details .success {
+      background-color: greenyellow;
+    }
+    .details .error {
+      background-color: red;
+    }
+    .details .failure {
+      background-color: salmon;
+    }
+    .details .skipped {
+      background-color: gray;
+    }
+
+    .button {
+      font-size: 1em;
+      padding: 6px;
+      width: 4em;
+      text-align: center;
+      background-color: #06d85f;
+      border-radius: 20px/50px;
+      cursor: pointer;
+      transition: all 0.3s ease-out;
+    }
+    a.button{
+      color: gray;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .button:hover {
+      background: #2cffbd;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+      line-height: 25px;
+    }
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      width: 50%;
+      position: relative;
+      transition: all 3s ease-in-out;
+    }
+
+    .popup h2 {
+      margin-top: 0;
+      color: #333;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+    .popup .close:hover {
+      color: #06d85f;
+    }
+    .popup .content {
+      max-height: 80%;
+      overflow: auto;
+      text-align: left;
+    }
+    .popup .separator {
+      color:royalblue
+    }
+
+    @media screen and (max-width: 700px) {
+      .box {
+        width: 70%;
+      }
+      .popup {
+        width: 70%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Test Report: </h1>
+
+  <h2>Summary</h2>
+  <table id="summary">
+    <tr>
+      <th>START AT</th>
+      <td colspan="4">2020-06-17 11:33:43</td>
+    </tr>
+    <tr>
+      <th>DURATION</th>
+      <td colspan="4">0.393 seconds</td>
+    </tr>
+    <tr>
+      <th>PLATFORM</th>
+      <td>HttpRunner 2.2.6 </td>
+      <td>Java 1.8.0_201 </td>
+      <td colspan="2">Windows 10</td>
+    </tr>
+    <tr>
+      <th>STAT</th>
+      <th colspan="2">TESTCASES (success/fail)</th>
+      <th colspan="2">TESTSTEPS (success/fail/error/skip)</th>
+    </tr>
+    <tr>
+      <td>total (details) =></td>
+      <td colspan="2">1 (0/1)</td>
+<!--      <td colspan="2"> (/)</td>-->
+      <td colspan="2">1 (0/1/0/0)</td>
+<!--      <td colspan="2"> (///)</td>-->
+    </tr>
+  </table>
+
+  <h2>Details</h2>
+
+  
+  
+<!--  <h3>{"realValue":"singleApi"}</h3>-->
+  <h3>singleApi</h3>
+  <table id="suite_1" class="details">
+    <tr>
+      <td>TOTAL: 1</td>
+      <td>SUCCESS: 0</td>
+      <td>FAILED: 1</td>
+      <td>ERROR: 0</td>
+      <td>SKIPPED: 0</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <th colspan="2">Name</th>
+      <th>Response Time</th>
+      <th>Detail</th>
+    </tr>
+
+    
+    
+    
+    <tr id="record_1">
+      <th class="failure" style="width:5em;">failure</th>
+      <td colspan="2">reg_user</td>
+      <td style="text-align:center;width:6em;">360 ms</td>
+      <td class="detail">
+
+        
+        
+        <a class="button" href="#popup_log_1">log-1</a>
+        <div id="popup_log_1" class="overlay">
+          <div class="popup">
+            <h2>Request and Response data</h2>
+            <a class="close" href="#record_1">&times;</a>
+
+            <div class="content">
+              <h3>Name: reg_user</h3>
+
+              
+
+              
+
+              <h3>Request:</h3>
+              <div style="overflow: auto">
+                <table>
+                  
+                    <tr>
+                      <th>headers</th>
+                      <td>
+                        
+                            <pre>{&quot;Origin&quot;:&quot;http://testhp.yidianling.com&quot;,&quot;Cookie&quot;:&quot;cookies_create_account=create_account; _identity=4dbaa14131856fce3dfc201123ed5c37683bc0c288bc7d3dca17f05d67337f56a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A16%3A%22%5B894%2C%22%22%2C2592000%5D%22%3B%7D; PHPSESSID=l09pngli0cu9s8c1avrvm0t605; _csrf=42a7d7b225efbf99f26ce076ad24a4adee140801289960f27137d6b149440ffda%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22bBDN7-ThAepvEZw3NvTbPo30j580a12P%22%3B%7D&quot;,&quot;Accept&quot;:&quot;application/json, text/javascript, */*; q=0.01&quot;,&quot;Connection&quot;:&quot;keep-alive&quot;,&quot;Host&quot;:&quot;testhp.yidianling.com&quot;,&quot;Accept-Language&quot;:&quot;zh-CN,zh;q=0.9&quot;,&quot;Accept-Encoding&quot;:&quot;gzip, deflate&quot;,&quot;Content-Type&quot;:&quot;application/x-www-form-urlencoded; charset=UTF-8&quot;}</pre>
+                        
+                      </td>
+                    </tr>
+                  
+                    <tr>
+                      <th>method</th>
+                      <td>
+                        
+                            POST
+                        
+                      </td>
+                    </tr>
+                  
+                    <tr>
+                      <th>formData</th>
+                      <td>
+                        
+                            {"qq":"null","country":"0086","gender":"1","po_id":"0","user_name":"15022220268","wechat":"null","_csrf":"s8g88b7DIGFSJ8svQGpOnk3rTqEj43jDKzdxG_6ig26KjXmZ-axYN39P-0MfGnjxNYM07HGFSpJ9fhVKk-vlOA==","real_name":"null","client_id":"0","password":"123456","nick_name":"dailiao0268","fsid":"null","ffrom":"1201"}
+                        
+                      </td>
+                    </tr>
+                  
+                    <tr>
+                      <th>url</th>
+                      <td>
+                        
+                            http://testhp.yidianling.com/user-login/reg-user
+                        
+                      </td>
+                    </tr>
+                  
+                </table>
+              </div>
+
+              <h3>Response:</h3>
+              <div style="overflow: auto">
+                <table>
+                    
+                      <tr>
+                        <th>headers</th>
+                        <td>
+                          
+                            <pre>Server:nginx/1.16.0Date:Wed, 17 Jun 2020 03:33:44 GMTContent-Type:text/html; charset=UTF-8Transfer-Encoding:chunkedConnection:closeX-Powered-By:PHP/7.0.31-1+ubuntu14.04.1+deb.sury.org+1Expires:Thu, 19 Nov 1981 08:52:00 GMTCache-Control:no-store, no-cache, must-revalidatePragma:no-cacheSet-Cookie:PHPSESSID=878bi7t11kc6h0te1mkiqprtj1; path=/; domain=.yidianling.comSet-Cookie:cookies_create_account=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/Proxy-Connection:keep-alive</pre>
+                          
+                        </td>
+                      </tr>
+                    
+                      <tr>
+                        <th>status_code</th>
+                        <td>
+                          
+                            200
+                          
+                        </td>
+                      </tr>
+                    
+                      <tr>
+                        <th>content_type</th>
+                        <td>
+                          
+                            {"valuePos":13,"elements":[{"parameterCount":1,"name":"text/html","parameters":[{"name":"charset","value":"UTF-8"}],"value":""}],"name":"Content-Type","buffer":{"empty":false,"full":false},"value":"text/html; charset=UTF-8"}
+                          
+                        </td>
+                      </tr>
+                    
+                      <tr>
+                        <th>body</th>
+                        <td>
+                          
+                            
+                              <pre>{}</pre>
+                            
+                          
+                        </td>
+                      </tr>
+                    
+                      <tr>
+                        <th>cookies</th>
+                        <td>
+                          
+                            PHPSESSID:878bi7t11kc6h0te1mkiqprtj1
+                          
+                        </td>
+                      </tr>
+                    
+                  </table>
+              </div>
+              
+
+              <h3>Validators:</h3>
+                <div style="overflow: auto">
+                
+                
+                <table>
+                    <tr>
+                      <th>check</th>
+                      <th>comparator</th>
+                      <th>expect value</th>
+                      <th>actual value</th>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td class="failed">
+                      
+                        content.client_id
+                      </td>
+                      <td>equals</td>
+                      <td>0</td>
+                      <td></td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td class="failed">
+                      
+                        content.errNo
+                      </td>
+                      <td>equals</td>
+                      <td>0</td>
+                      <td>3</td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td class="failed">
+                      
+                        content.msg
+                      </td>
+                      <td>equals</td>
+                      <td>创建成功</td>
+                      <td>已经有该账号</td>
+                    </tr>
+                    
+                </table>
+                
+
+                
+                
+              </div>
+
+              <h3>Statistics:</h3>
+              <div style="overflow: auto">
+                <table>
+                  <tr>
+                      <th>content_size(bytes)</th>
+                      <td>0</td>
+                    </tr>
+                  <tr>
+                    <th>response_time(ms)</th>
+                    <td>360</td>
+                  </tr>
+                  <tr>
+                    <th>elapsed(ms)</th>
+                    <td>360</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+
+        
+          <a class="button" href="#popup_attachment_1">traceback</a>
+          <div id="popup_attachment_1" class="overlay">
+            <div class="popup">
+              <h2>Traceback Message</h2>
+              <a class="close" href="#record_1">&times;</a>
+              <div class="content"><pre>
+com.hrun.exceptions.HrunBizException: validate校验错误
+	at com.hrun.exceptions.HrunExceptionFactory.create(HrunExceptionFactory.java:6)
+	at com.hrun.Runner._run_test(Runner.java:200)
+	at com.hrun.Runner.run_test(Runner.java:92)
+	at com.hrun.component.RunTestCls.runTest(RunTestCls.java:24)
+	at com.hrun.component.testcase.TestCaseRun._callTestMethod(TestCaseRun.java:48)
+	at com.hrun.component.testcase.TestCaseRun.run(TestCaseRun.java:36)
+	at com.hrun.component.testsuite.TestSuiteRun.run(TestSuiteRun.java:39)
+	at com.hrun.TextTestRunner.run(TextTestRunner.java:27)
+	at com.hrun.HttpRunner._run_suite(HttpRunner.java:188)
+	at com.hrun.HttpRunner.run_tests(HttpRunner.java:117)
+	at com.hrun.HttpRunner.run_path(HttpRunner.java:81)
+	at com.hrun.HttpRunner.run_path(HttpRunner.java:65)
+	at com.hrun.App.main(App.java:78)
+Caused by: java.lang.Throwable
+	at com.hrun.exceptions.HrunBizException.&lt;init&gt;(HrunBizException.java:18)
+	... 13 more
+
+</pre></div>
+            </div>
+          </div>
+        
+
+      </td>
+    </tr>
+  
+  </table>
+  
+</body>

@@ -1,0 +1,17 @@
+request:
+  url: https://movie.douban.com/j/search_tags?type=$type&source=index
+  method: GET
+  headers:
+    Accept: "*/*"
+    Accept-Language: zh-CN,zh;q=0.9
+    Connection: keep-alive
+    Host: movie.douban.com
+    Referer: https://movie.douban.com/
+    User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3775.400 QQBrowser/10.6.4208.400
+    X-Requested-With: XMLHttpRequest
+validate:
+  - equals: ["status_code", 200]
+setup_hooks:
+  - ${setup_hooks($request)}
+teardown_hooks:
+  - ${teardown_hooks($response, $n_secs)}

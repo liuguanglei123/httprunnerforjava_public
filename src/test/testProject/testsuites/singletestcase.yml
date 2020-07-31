@@ -1,0 +1,13 @@
+config:
+    name: "1234"
+    variables:
+        hostnamee: host_name_test
+
+testcases:
+    singleApi:
+        testcase: testcases/singleApi.yml
+        variables:
+            version: 4.1.2
+            hostname: $hostnamee
+        validate:
+            - equals: ["status_code", 1200]

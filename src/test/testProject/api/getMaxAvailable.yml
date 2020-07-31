@@ -1,0 +1,26 @@
+variables:
+  uid: 2784216
+request:
+  url: https://api.ydl.com/api/auth/new_coupon/getMaxAvailable
+  method: POST
+  headers:
+    Content-Type: application/json;charset=UTF-8
+    Accept: application/json, text/plain, */*
+    uid: "2784216"
+  json:
+    applyEnds: 3
+    goodsId: "661"
+    "receiveType": 1
+    "services": 3
+    "uid": $uid
+    "accessToken": "bcd5180e46a1330fceab709a55bab2f4MTkwODIy"
+validate:
+  - equals: ["status_code", 200]
+  - equals: ["content.code", "200"]
+  - equals: ["content.data.amount", 0]
+  - equals: ["content.msg", "成功"]
+setup_hooks:
+  - ${setup_hooks1($request)}
+  - ${setup_hooks2($request)}
+teardown_hooks:
+  - ${teardown_hooks($response, $n_secs)}

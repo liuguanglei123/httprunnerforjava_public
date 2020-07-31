@@ -1,0 +1,21 @@
+- config:
+    name: ydltestcases
+    variables:
+        isFromApp: "1"
+        version: 4.0.1
+        code: 200
+        status_code: $code
+        ban: banner
+    base_url: "https://api.ydl.com/"
+
+- test:
+      api: api/deliverybannerapi.yml
+      name: deliverybannerapi
+      variables:
+          n_secs: 1
+
+- test:
+      testcase: testcases/anothertestcase.yml
+      name: anothertestcase
+      variables:
+          n_secs: 1

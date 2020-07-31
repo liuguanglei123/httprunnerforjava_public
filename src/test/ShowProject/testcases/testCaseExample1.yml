@@ -1,0 +1,6 @@
+- config:
+    name: caseExample1
+
+- test:
+    api: api/searchTags.yml
+    name: searchTagsMovie

@@ -1,0 +1,18 @@
+config:
+  name: "1234"
+  variables:
+    hostnamee: host_name_test
+
+testcases:
+  singleApi:
+    testcase: testcases/testcaseintestcase_python.yml
+    variables:
+      version: 4.1.2
+      hostname: $hostnamee
+
+  singleApi2:
+    testcase: testcases/getorder_python.yml
+    variables:
+      uid: "111"
+      phone: "222"
+      passwd: "333"

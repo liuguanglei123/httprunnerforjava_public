@@ -1,0 +1,7 @@
+.idea/
+target/
+src/test/testProject/logs/
+src/test/testProject/reports/
+#src/test/testProject/reportss/
+#src/test/testProject/storage/
+src/test/testProject/Debugtalk.class

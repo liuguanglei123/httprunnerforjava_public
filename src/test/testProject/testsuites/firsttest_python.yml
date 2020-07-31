@@ -1,0 +1,10 @@
+config:
+  name: "ABC"
+
+testcases:
+  singleApi:
+    testcase: testcases/reg_user_python.yml
+    variables:
+      weihao: ${func2()}
+    parameters:
+      weihao1: ["0269"]

@@ -1,0 +1,26 @@
+- config:
+    name: ydltestcases
+    variables:
+        isFromApp: "1"
+        version: 4.0.1
+        code: 200
+        status_code: $code
+        ban: banner
+    base_url: "https://api.ydl.com/"
+    verify: False
+    export:
+        - session_token
+
+- test:
+      api: api/getMaxAvailablecoupon.yml
+      name: getMaxAvailablecoupon
+      variables:
+          n_secs: 1
+
+- test:
+      api: api/searchapi.yml
+      name: getMaxAvailablecoupon
+      variables:
+          n_secs: 1
+      extract:
+          - session_token: content.code

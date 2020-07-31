@@ -1,0 +1,6 @@
+- config:
+    name: "123456"
+
+- test:
+    name: getorder
+    api: api/getorder_python.yml

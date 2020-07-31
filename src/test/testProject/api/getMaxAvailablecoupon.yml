@@ -1,0 +1,23 @@
+name: getMaxAvailable
+request:
+    url: /api/auth/new_coupon/getMaxAvailable
+    method: POST
+    json:
+        applyEnds: 3
+        goodsId: 2513
+        receiveType: 1
+        services: 3
+        uid: 2784088
+        accessToken: 51552182ccc1350d259a5bbc92954eacMTkxMg
+    headers:
+        Host: api.ydl.com
+        Connection: keep-alive
+        Content-Length: "132"
+        Accept: application/json, text/plain, */*
+        uid: "2784088"
+        accessToken: 51552182ccc1350d259a5bbc92954eacMTkxMg
+validate:
+    - equals: ["status_code", 200]
+    - equals: ["content.code", "200"]
+    - equals: ["content.data.amount", 0]
+    - equals: ["content.msg", "成功"]

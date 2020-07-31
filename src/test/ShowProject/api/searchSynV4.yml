@@ -1,0 +1,30 @@
+variables:
+  deviceUid: 7554646
+request:
+  url: https://prf.51songguo.com/app/search/searchSynV4
+  method: POST
+  form:
+    isStore: 0
+    isSongguoMan: 0
+    isWaterfall: 0
+    version: 4330
+    topicType: 情感挽回
+    ctoken: 00a5c8ff19176963b92dd5e99d0c4f10
+    cKey: 6cf2d26e304f2005808bf10ed3ed93e0
+    apkVersion: 7.6.3.0
+    deviceUid: $deviceUid
+    mtoken: ea9567d129929335
+    page: 1
+    device: 3
+    key: d5d6ec8b31224ead5959a419ce61a5e3
+    isEnglish: 0
+  headers:
+    Content-Type: application/x-www-form-urlencoded
+    Host: prf.51songguo.com
+    Connection: Keep-Alive
+    Accept-Encoding: gzip
+    User-Agent: okhttp/3.12.0
+validate:
+  - equals: ["content.code", 0]
+  - equals: ["status_code", 200]
+  - equals: ["content.msg", "成功"]

@@ -1,0 +1,16 @@
+- config:
+    name: "123456"
+
+- test:
+    name: deliverybannerapi
+    api: api/deliverybannerapi.yml
+    variables:
+        n_secs: 1
+    validate:
+      - equals: ["content.code", "300"]
+
+- test:
+      name: deliverybannerapi2
+      api: api/deliverybannerapi.yml
+      variables:
+          planId: 33

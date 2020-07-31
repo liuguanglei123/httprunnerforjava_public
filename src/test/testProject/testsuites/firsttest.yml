@@ -1,0 +1,8 @@
+config:
+  name: "ABC"
+
+testcases:
+  singleApi:
+    testcase: testcases/reg_user.yml
+    parameters:
+      weihao: ["0268"]

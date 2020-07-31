@@ -1,0 +1,25 @@
+variables:
+    version: 4.0.13
+    OS105: OS1057
+    smartisan: smartisan
+request:
+    url: https://api.ydl.com/api/consult/search/conditions
+    method: GET
+    params:
+        accessToken:
+        uid:
+        version: $version
+        ts: 1576224282
+        osBuild: OS105,7.1.1,4.0.13
+        isFromApp: $isFromApp
+        ffrom: ${funcWithoutParam()}
+    headers:
+        ffrom: android_chuizi
+        isFromApp: "1"
+        version: 4.0.13
+        osBuild: ${funcWithParam($smartisan,$OS105)}
+validate:
+    - equals: ["status_code", $status_code]
+    - equals: ["content.code", "201"]
+    - equals: ["content.data.cates", 9]
+    - equals: ["content.msg", "成功"]

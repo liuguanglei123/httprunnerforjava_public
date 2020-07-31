@@ -1,0 +1,8 @@
+config:
+  name: suiteExample1
+
+testcases:
+  singleApi:
+    testcase: testcases/testCaseExample1.yml
+    parameters:
+      type: ["movie","tv"]
