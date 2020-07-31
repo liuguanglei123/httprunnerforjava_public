@@ -66,10 +66,10 @@ suite是操作用例的集合，一个整体的项目中可能包含非常多的
 这三级用例结构是httprunner原版就已经实现的，在使用java实现的时候保留了原本的结构。
 
 简单看一下用例执行日志和结果：
-![report.png](guanglei.site/storage/thumbnails/_signature/2FEA51NKSJJIOB8KGOOTS665EI.png)
+![report.png](https://guanglei.site/storage/thumbnails/_signature/2FEA51NKSJJIOB8KGOOTS665EI.png)
 
 执行完用例后，会在对应的目录下生成测试报告，内容如下：
-![testReport.png](guanglei.site/storage/thumbnails/_signature/2PNHQ0BC2HP3L0N51KDGE8363I.png)
+![testReport.png](https://guanglei.site/storage/thumbnails/_signature/2PNHQ0BC2HP3L0N51KDGE8363I.png)
 
 # 基本功能描述
 ## 变量及作用域Context
@@ -94,9 +94,9 @@ test：测试步骤的变量空间（context）会继承或覆盖 config 中定�
 在httprunner读取到api文件时，发现http请求参数中的param包含了如下内容
 `https://movie.douban.com/j/search_tags?type=$type&source=index `
 判断此处需要读取指定的变量，很明显，第一个用例执行时type为"movie"，
-![movie.png](guanglei.site/storage/thumbnails/_signature/3880J9BSUQIRFCTEFFNI1FDFFT.png)
+![movie.png](https://guanglei.site/storage/thumbnails/_signature/3880J9BSUQIRFCTEFFNI1FDFFT.png)
 第二个用例执行时type取config节点中的值"tv"
-![tv.png](guanglei.site/storage/thumbnails/_signature/3TBE2H58SA8F0RE41Q7BFHCKLG.png)
+![tv.png](https://guanglei.site/storage/thumbnails/_signature/3TBE2H58SA8F0RE41Q7BFHCKLG.png)
 
 ## 参数化
 在实际测试工作中，经常会遇到，重复录入多个用户，重复调用一个接口多次这样的场景，这些用例的特点是接口调用的都是同一个，只不过某几个参数不同而已，hrun也支持参数化的配置，一个parameter节点便能解决这个问题。同样是上面这个示例，我们可以将suite文件内容修改如下：
