@@ -12,6 +12,8 @@ request:
 validate:
   - equals: ["status_code", 200]
 setup_hooks:
-  - ${setup_hooks($request)}
+  - ${setup_hooks()}
 teardown_hooks:
-  - ${teardown_hooks($response, $n_secs)}
+  - ${teardown_hooks($type)}
+extract:
+  - session_token: content.token

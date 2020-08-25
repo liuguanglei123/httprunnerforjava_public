@@ -86,104 +86,37 @@
 						}
 					]
 				},
-				"extract":{
-					"extract":{}
-				},
-				"api_def":{}
-			}
-		]
-	},
-	{
-		"config":{
-			"name":{
-				"realValue":"singleApi"
-			},
-			"variables":{
-				"empty":false,
-				"size":1,
-				"variables":{
-					"type":{
-						"realValue":"tv"
-					}
-				}
-			}
-		},
-		"testSteps":[
-			{
-				"name":{
-					"realValue":"searchTagsMovie"
-				},
-				"variables":{
+				"setup_hooks":{
 					"empty":false,
-					"size":1,
-					"variables":{
-						"type":{
-							"realValue":"tv"
-						}
-					}
-				},
-				"request":{
-					"url":{
-						"realValue":"https://movie.douban.com/j/search_tags?type=$type&source=index"
-					},
-					"method":{
-						"realValue":"GET"
-					},
-					"headers":{
-						"empty":false,
-						"headers":{
-							"Accept":{
-								"realValue":"*/*"
-							},
-							"X-Requested-With":{
-								"realValue":"XMLHttpRequest"
-							},
-							"Connection":{
-								"realValue":"keep-alive"
-							},
-							"Referer":{
-								"realValue":"https://movie.douban.com/"
-							},
-							"User-Agent":{
-								"realValue":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3775.400 QQBrowser/10.6.4208.400"
-							},
-							"Host":{
-								"realValue":"movie.douban.com"
-							},
-							"Accept-Language":{
-								"realValue":"zh-CN,zh;q=0.9"
-							}
-						}
-					}
-				},
-				"validate":{
-					"empty":false,
-					"prepared_validators":[
+					"setup_hooks":[
 						{
-							"func_name":"equals",
+							"func_name":"setup_hooks",
+							"args":[]
+						}
+					]
+				},
+				"teardown_hooks":{
+					"empty":false,
+					"teardown_hooks":[
+						{
+							"func_name":"teardown_hooks",
 							"args":[
 								{
-									"realValue":"status_code"
-								},
-								{
-									"evalValue":200
+									"realValue":"$type"
 								}
-							]
-						}
-					],
-					"raw_validate":[
-						{
-							"equals":[
-								"status_code",
-								200
 							]
 						}
 					]
 				},
 				"extract":{
-					"extract":{}
+					"extract":{
+						"session_token":"content.token"
+					}
 				},
-				"api_def":{}
+				"api_def":{
+					"setup_hooks":{"$ref":"$[0].testSteps[0].setup\\_hooks"},
+					"teardown_hooks":{"$ref":"$[0].testSteps[0].teardown\\_hooks"}
+				}
 			}
 		]
 	}

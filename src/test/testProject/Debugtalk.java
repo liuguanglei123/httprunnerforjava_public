@@ -14,11 +14,20 @@ public class Debugtalk {
     public void setup_hooks(){
         System.out.println("setup_hooks execute");
     }
+    public void setup_testsuite(){
+        System.out.println("setup_testsuite execute");
+    }
     public void setup_testcase(){
         System.out.println("setup_testcase execute");
     }
+    public void setup_api(){
+        System.out.println("setup_api execute");
+    }
     public void teardown_hooks(){
         System.out.println("teardown_hooks execute");
+    }
+    public void teardown_testsuite(){
+        System.out.println("teardown_testsuite execute");
     }
     public void func2(){
         System.out.println("func2 execute");

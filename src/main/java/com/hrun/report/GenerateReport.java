@@ -41,8 +41,6 @@ public class GenerateReport {
             e.printStackTrace();
         }
 
-
-
         String report_path;
         if(!Strings.isNullOrEmpty(report_file)){
             report_path = Paths.get(report_dir).resolve(report_file).toAbsolutePath().toString();
@@ -65,6 +63,15 @@ public class GenerateReport {
         }
 
         logger.info("Generated Html report: %s".format(report_path));
+
+        String osName = System.getProperty("os.name", "");// 获取操作系统的名字
+        try{
+            if (osName.startsWith("Windows")) {// windows
+                Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + report_path);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return report_path;
     }
 

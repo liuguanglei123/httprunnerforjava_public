@@ -2,7 +2,7 @@
 	"details":[
 		{
 			"stat":{
-				"total":2,
+				"total":1,
 				"failures":0,
 				"successes":0,
 				"errors":0,
@@ -30,19 +30,19 @@
 										"url":"https://movie.douban.com/j/search_tags?type=movie&source=index"
 									},
 									"response":{
-										"headers":"Date:Fri, 31 Jul 2020 06:09:49 GMTContent-Type:application/json; charset=utf-8Transfer-Encoding:chunkedConnection:keep-aliveKeep-Alive:timeout=30X-Xss-Protection:1; mode=blockX-Douban-Mobileapp:0Expires:Sun, 1 Jan 2006 01:00:00 GMTPragma:no-cacheCache-Control:must-revalidate, no-cache, privateSet-Cookie:bid=eXYvt6TawhQ; Expires=Sat, 31-Jul-21 06:09:49 GMT; Domain=.douban.com; Path=/X-DOUBAN-NEWBID:eXYvt6TawhQX-DAE-App:movieX-DAE-Instance:defaultServer:daeX-Content-Type-Options:nosniff",
+										"headers":"Date:Tue, 25 Aug 2020 10:49:18 GMTContent-Type:application/json; charset=utf-8Transfer-Encoding:chunkedConnection:keep-aliveKeep-Alive:timeout=30X-Xss-Protection:1; mode=blockX-Douban-Mobileapp:0Expires:Sun, 1 Jan 2006 01:00:00 GMTPragma:no-cacheCache-Control:must-revalidate, no-cache, privateSet-Cookie:bid=VPithw46RFQ; Expires=Wed, 25-Aug-21 10:49:18 GMT; Domain=.douban.com; Path=/X-DOUBAN-NEWBID:VPithw46RFQX-DAE-App:movieX-DAE-Instance:defaultServer:daeX-Content-Type-Options:nosniff",
 										"status_code":200,
 										"content_type":"application/json; charset=utf-8",
 										"body":"{\"tags\":[\"热门\",\"最新\",\"豆瓣高分\",\"冷门佳片\",\"华语\",\"欧美\",\"韩国\",\"日本\"]}",
-										"cookies":"bid:eXYvt6TawhQ"
+										"cookies":"bid:VPithw46RFQ"
 									}
 								}
 							],
 							"name":"searchTagsMovie",
 							"stat":{
 								"content_size":0,
-								"elapsed_ms":497,
-								"response_time_ms":497
+								"elapsed_ms":464,
+								"response_time_ms":464
 							},
 							"validators":{
 								"validate_extractor":[
@@ -59,60 +59,7 @@
 						}
 					],
 					"meta_datas":{"$ref":"$.details[0].records[0].meta\\_datas\\_expanded[0]"},
-					"response_time":497,
-					"status":"success"
-				},
-				{
-					"attachment":"",
-					"name":"searchTagsTv",
-					"meta_datas_expanded":[
-						{
-							"data":[
-								{
-									"request":{
-										"headers":{
-											"X-Requested-With":"XMLHttpRequest",
-											"Accept":"*/*",
-											"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3775.400 QQBrowser/10.6.4208.400",
-											"Referer":"https://movie.douban.com/",
-											"Connection":"keep-alive",
-											"Host":"movie.douban.com",
-											"Accept-Language":"zh-CN,zh;q=0.9"
-										},
-										"method":"GET",
-										"url":"https://movie.douban.com/j/search_tags?type=tv&source=index"
-									},
-									"response":{
-										"headers":"Date:Fri, 31 Jul 2020 06:09:49 GMTContent-Type:application/json; charset=utf-8Transfer-Encoding:chunkedConnection:keep-aliveKeep-Alive:timeout=30X-Xss-Protection:1; mode=blockX-Douban-Mobileapp:0Expires:Sun, 1 Jan 2006 01:00:00 GMTPragma:no-cacheCache-Control:must-revalidate, no-cache, privateX-DAE-App:movieX-DAE-Instance:defaultServer:daeX-Content-Type-Options:nosniff",
-										"status_code":200,
-										"content_type":"application/json; charset=utf-8",
-										"body":"{\"tags\":[\"热门\",\"国产剧\",\"综艺\",\"美剧\",\"日剧\",\"韩剧\",\"日本动画\",\"纪录片\"]}",
-										"cookies":"bid:eXYvt6TawhQ"
-									}
-								}
-							],
-							"name":"searchTagsTv",
-							"stat":{
-								"content_size":0,
-								"elapsed_ms":61,
-								"response_time_ms":61
-							},
-							"validators":{
-								"validate_extractor":[
-									{
-										"expect_value":200,
-										"comparator":"equals",
-										"expect":200,
-										"check_result":"pass",
-										"check_value":200,
-										"check":"status_code"
-									}
-								]
-							}
-						}
-					],
-					"meta_datas":{"$ref":"$.details[0].records[1].meta\\_datas\\_expanded[0]"},
-					"response_time":61,
+					"response_time":464,
 					"status":"success"
 				}
 			],
@@ -121,8 +68,8 @@
 				"realValue":"singleApi"
 			},
 			"time":{
-				"duration":0.585,
-				"start_at":1596175788168
+				"duration":0.485,
+				"start_at":1598352557603
 			}
 		}
 	],
@@ -138,14 +85,14 @@
 		"success":1
 	},
 	"teststepsStat":{
-		"total":2,
+		"total":1,
 		"failures":0,
 		"successes":0,
 		"errors":0,
 		"skipped":0
 	},
 	"time":{
-		"duration":0.585,
-		"start_at":1596175788168
+		"duration":0.485,
+		"start_at":1598352557603
 	}
 }

@@ -1,4 +1,6 @@
 package com.hrun.component.intf;
 
-public interface Hooks {
+import com.hrun.component.common.Variables;
+
+public interface Hooks extends Parseable {
 }

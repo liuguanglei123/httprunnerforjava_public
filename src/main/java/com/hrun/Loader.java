@@ -115,7 +115,7 @@ public class Loader {
             Api api = new Api(raw_testinfo,false);
             return api;
         }else if(raw_testinfo.containsKey("testcase")){
-            TestCase testCase = new TestCase(raw_testinfo);
+            TestCase testCase = new TestCase((String)raw_testinfo.get("name"),raw_testinfo);
             return testCase;
         }else{
             HrunExceptionFactory.create("E0016");
@@ -137,6 +137,7 @@ public class Loader {
         tests_mapping.load_project_data(file.getAbsolutePath(), dot_env_path);
 
         if (file.isDirectory()) {
+            // TODO: test
             List<String> files_list = load_folder_files(path, true);
             for (Iterator<String> everypath = files_list.iterator(); everypath.hasNext(); ) {
                 //TODO:__load_file_content只支持绝对路径加载
@@ -192,20 +193,20 @@ public class Loader {
 
         if (raw_content instanceof Map) {
             if (((Map) raw_content).containsKey("testcases")) {
-                //TODO: 是否可以用工厂模式创建？
                 TestSuite testSuite = new TestSuite((Map) raw_content);
                 testSuite.setPath(path);
                 return testSuite;
             } else if (((Map) raw_content).containsKey("teststeps")) {
-                HrunExceptionFactory.create("E0010");
+                HrunExceptionFactory.create("E0060");
             } else if (((Map) raw_content).containsKey("request")) {
-                HrunExceptionFactory.create("E0010");
+                HrunExceptionFactory.create("E0060");
             } else {
-                HrunExceptionFactory.create("E0010");
+                HrunExceptionFactory.create("E0060");
             }
         } else if (raw_content instanceof List && ((List) raw_content).size() > 0) {
+            //TODO:
         } else {
-            HrunExceptionFactory.create("E0010");
+            HrunExceptionFactory.create("E0060");
         }
 
         return null;

@@ -1,0 +1,6 @@
+- config:
+    name: "123456"
+
+- test:
+    name: deliverybannerapi
+    api: api/deliverybannerapi.yml

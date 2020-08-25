@@ -24,6 +24,4 @@ public class Comparator<T> {
             HrunExceptionFactory.create("E0023");
         }
     }
-
-
 }

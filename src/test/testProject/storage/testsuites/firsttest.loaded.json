@@ -1,8 +1,8 @@
 {
 	"project_mapping":{
 		"env":{},
-		"pWD":"C:\\Users\\liu\\Desktop\\HttpRunner\\hrunforjava\\src\\test\\testProject",
-		"test_path":"C:\\Users\\liu\\Desktop\\HttpRunner\\hrunforjava\\src\\test\\testProject\\testsuites\\firsttest.yml"
+		"pWD":"C:\\Users\\liu\\Desktop\\java\\httprunner_java\\src\\test\\testProject",
+		"test_path":"C:\\Users\\liu\\Desktop\\java\\httprunner_java\\src\\test\\testProject\\testsuites\\firsttest.yml"
 	},
 	"testSuites":[
 		{
@@ -160,7 +160,7 @@
 					"testSteps":[]
 				}
 			},
-			"path":"C:\\Users\\liu\\Desktop\\HttpRunner\\hrunforjava\\src\\test\\testProject\\testsuites\\firsttest.yml",
+			"path":"C:\\Users\\liu\\Desktop\\java\\httprunner_java\\src\\test\\testProject\\testsuites\\firsttest.yml",
 			"parsed_testCasesMap":{}
 		}
 	],

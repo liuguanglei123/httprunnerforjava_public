@@ -70,6 +70,7 @@ public class Variables implements Serializable, Parseable {
      * 合并两个Variables对象然后返回合并后的Variables对象
      * @param var1
      * @param var2
+     * var2 的优先级比 var1 高
      */
     public static Variables extend2Variables(Variables var1,Variables var2){
         Variables override_variables_mapping = Utils.deepcopy_dict(Optional.ofNullable(var1).orElse(new Variables()));

@@ -47,7 +47,6 @@ public class HttpRunner {
 
     private String project_working_directory;
 
-
     public HttpRunner(Boolean failfast, Boolean save_test,  String log_level, String log_file){
         if(log_level != null) {
             LoggerSetting.setLogLevel(log_level);

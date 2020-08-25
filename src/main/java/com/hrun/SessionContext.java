@@ -1,6 +1,7 @@
 package com.hrun;
 
 import com.hrun.component.common.*;
+import com.hrun.component.intf.Hooks;
 import com.hrun.component.intf.Parseable;
 import com.hrun.lazyContent.LazyString;
 import lombok.Data;
@@ -64,6 +65,11 @@ public class SessionContext {
     }
 
     public <T extends Parseable> T eval_content(T content){
-        return (T)content.to_value(this.test_variables_mapping);
+        try{
+            return (T)content.to_value(this.test_variables_mapping);
+        }catch(Exception e){
+
+        }
+        return null;
     }
 }

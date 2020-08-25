@@ -60,6 +60,14 @@ public class LazyContent<T> implements Cloneable, Serializable {
         return false;
     }
 
+    public static Boolean is_func_exist(String content){
+        Matcher var_match = function_regex_compile.matcher(content);
+        if(var_match.find()){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * 获得LazyContent对象的原始值 raw_value
      * @return

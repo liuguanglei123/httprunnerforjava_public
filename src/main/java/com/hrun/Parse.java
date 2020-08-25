@@ -35,7 +35,8 @@ public class Parse {
     static public Pattern function_regex_compile = Pattern.compile("\\$\\{(\\w+)\\(([\\$\\w\\.\\-/\\s=,]*)\\)\\}");
 
     /**
-     * 解析用例的主入口，主要对用例中每个节点每个层级进行parse操作，对于需要处理的LazyString，进行标记和整理
+     * 解析用例的主入口，主要对用例中每个节点每个层级进行parse操作，对于部分需要处理的LazyString，进行标记和整理
+     * 判断是否是包含了变量的String或者包含了函数的function
      * @param tests_mapping
      * @return 整理后的TestCase集合
      */
@@ -57,15 +58,14 @@ public class Parse {
     }
 
     public static Method get_mapping_function(String function_name){
+        //如果这里仅仅是根据方法名去查询，场景有三：
+        // 1.查询的方法是buildin方法，比如equals less_than等
+        // 2.查询的方法是debugtalk.java内部定义的方法，但是该方法没有参数
+        // 3.查询的方法是debugtalk.java内部定义的方法，但是该方法是有参数的，但是这里仅仅是根据方法名去查询了
+        // 并没有做参数的匹配，也就是说，debugtalk文件不支持方法的重载
         Method method = null;
-        try{
-            //TODO:看看能否优化这里的流程
-            method = functions.getDeclaredMethod(function_name);
-            return method;
-        }catch(NoSuchMethodException e){
-//            HrunExceptionFactory.create("E0024");
-//            logger.info(String.format("方法 %s 在debugtalk.java中没有找到",function_name));
-        }
+        //TODO:看看能否优化这里的流程
+
         //TODO:方法名如果是parameterize 或者environ或者multipart_encoder等等，需要解析
 
         //TODO:hrun这里采用的是多层调用，获取builtin模块的各个方法，但是java与此不同的是，builtin中的
@@ -77,8 +77,18 @@ public class Parse {
             classed[1] = Object.class;
             method = built_in_functions.getMethod(function_name,classed);
         }catch(Exception e){
-            logger.info(String.format("方法 %s 在builtin中也没有找到",function_name));
+            logger.info(String.format("方法 %s 在builtin中没有找到",function_name));
         }
+
+        if(method == null) {
+            for (Method each : functions.getMethods()) {
+                if (each.getName().equals(function_name)) {
+                    method = each;
+                    return method;
+                }
+            }
+        }
+
         if(method == null)
             HrunExceptionFactory.create("E0024");
         return method;

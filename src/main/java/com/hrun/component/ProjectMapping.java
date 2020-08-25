@@ -9,9 +9,11 @@ import java.util.Map;
 @Data
 public class ProjectMapping {
 
+    // 环境变量内容
     @JSONField(ordinal=1)
     private Map<String, Object> env;
 
+    // 当前执行的路径，一般是项目的根路径
     @JSONField(ordinal=2)
     private String PWD;
 

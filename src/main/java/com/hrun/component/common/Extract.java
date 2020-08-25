@@ -23,29 +23,25 @@ public class Extract implements Serializable, Parseable {
     /**
      * 构造函数一： 创建Extract对象，不支持LazyString形式
      * @param raw_extract extract的具体内容
-     * @param isLoadApi 是否是加载api文件/节点，true说明加载的是api节点，此时raw_extract的内容是
      *                  extract:
      *                      - session_token: content.token
      *              false说明加载的是testcase节点，此时raw_extract的内容是
      *                  extract:
      *                      - session_token
      */
-    public Extract(List raw_extract, Boolean isLoadApi) {
-        if(isLoadApi) {
-            for (int i = 0; i < raw_extract.size(); i++) {
-                if (raw_extract.get(i) instanceof Map) {
-                    for (Map.Entry<String, String> entry : (((Map<String, String>) raw_extract.get(i)).entrySet())) {
-                        extract.put(entry.getKey(), entry.getValue());
-                        break;
-                    }
-                } else {
-                    HrunExceptionFactory.create("E0037");
+    public Extract(List raw_extract) {
+        for (int i = 0; i < raw_extract.size(); i++) {
+            if (raw_extract.get(i) instanceof Map) {
+                for (Map.Entry<String, String> entry : (((Map<String, String>) raw_extract.get(i)).entrySet())) {
+                    extract.put(entry.getKey(), entry.getValue());
+                    break;
                 }
-            }
-        }else{
-            for (int i = 0; i < raw_extract.size(); i++) {
+            }else if (raw_extract.get(i) instanceof String) {
                 extract2Output.add((String)raw_extract.get(i));
+            }else {
+                HrunExceptionFactory.create("E0037");
             }
+
         }
     }
 

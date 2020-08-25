@@ -155,6 +155,7 @@ public class TestSuite implements RunableComponent,Serializable, Parseable {
                 parsed_testcase.getConfig().setBase_url(testsuite_base_url);
 
             // 1, testsuite config => testcase config
+            // testsuite优先级高
             // override test_dict variables
             Variables testcase_config_variables = Variables.extend2Variables(
                     entry.getValue().getVariables(),
@@ -163,6 +164,7 @@ public class TestSuite implements RunableComponent,Serializable, Parseable {
             entry.getValue().setVariables(null);
 
             // 2, testcase config > testcase_def config
+            // testsuite文件中的testcase节点的变量优先级比testcase文件中的config部分高
             // override testcase_def config variables
             Variables overrided_testcase_config_variables = Variables.extend2Variables(
                     parsed_testcase.getConfig().getVariables(),

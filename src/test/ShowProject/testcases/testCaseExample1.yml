@@ -4,3 +4,11 @@
 - test:
     api: api/searchTags.yml
     name: searchTagsMovie
+    variables:
+        type: tv
+    extract:
+        - session_token
+
+#- test:
+#    testcase: testcases/testCaseExample2.yml
+#    name: caseExample2

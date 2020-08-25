@@ -14,10 +14,17 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.regex.Matcher;
+
 import com.hrun.builtin.Comparator;
+
+import static com.hrun.Parse.function_regex_compile;
+import static com.hrun.component.ProjectMapping.functions;
 
 @Data
 public class LazyFunction implements Serializable {
+    @JSONField(serialize=false)
+    private String raw_str;
 
     @JSONField(serialize=false)
     private Set check_variables_set;
@@ -42,9 +49,31 @@ public class LazyFunction implements Serializable {
     @JSONField(serialize=false)
     private Boolean isBuiltInFunc = false;
 
+    public LazyFunction(String str){
+        if(!LazyContent.is_func_exist(str))
+            HrunExceptionFactory.create("E0061");
+        this.raw_str = str;
+    }
+
     public LazyFunction(Map function_meta, Set check_variables_set){
         this.check_variables_set = Optional.ofNullable(check_variables_set).orElse(new HashSet());
         this.__parse(function_meta);
+    }
+
+    public void parse(Set check_variables_set) {
+        this.check_variables_set = check_variables_set;
+        if (this.raw_str == null || this.raw_str.equals(""))
+            return;
+
+        Matcher func_match = function_regex_compile.matcher(raw_str);
+        if(func_match.find()){
+            Map<String,String> function_meta = new HashMap<String,String>();
+            function_meta.put("func_name",func_match.group(1));
+
+            function_meta.putAll(LazyString.parse_function_params(func_match.group(2)));
+
+            this.__parse(function_meta);
+        }
     }
 
     public void __parse(Map function_meta){
@@ -86,19 +115,36 @@ public class LazyFunction implements Serializable {
         return false;
     }
 
-    public Object to_value(Variables variables_mapping) throws InvocationTargetException, IllegalAccessException {
+    public Object to_value(Variables variables_mapping) throws InvocationTargetException,IllegalAccessException {
         //TODO:
         if(this.isBuiltInFunc) {
             if(this.args.get(0) == null)
                 HrunExceptionFactory.create("E0046");
             Comparator comparator = new Comparator(this.args.get(0));
             this._func.invoke(comparator,this.args.get(0),this.args.get(1));
+        }else{
+            try{
+                List<Object> funcParams = new ArrayList<Object>();
+                for(LazyContent each : _args){
+                    if(each instanceof LazyString)
+                        funcParams.add(((LazyString)each.to_value(variables_mapping)).getEvalValue());
+                    else
+                        funcParams.add(each.getEvalValue());
+                }
+                Object obj = functions.newInstance();
+                if(this._args.size() == 0){
+                    this._func.invoke(obj);
+                }else
+                    this._func.invoke(obj,funcParams.toArray());
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
 
         return null;
     }
 
-    public Object to_value() throws InvocationTargetException, IllegalAccessException {
+    public Object to_value() throws InvocationTargetException,IllegalAccessException {
         return to_value(null);
     }
 
@@ -109,6 +155,7 @@ public class LazyFunction implements Serializable {
         out.writeObject(_args);
         out.writeObject(args);
         out.writeObject(isBuiltInFunc);
+        out.writeObject(raw_str);
         Utils.tmpMethod = this._func;
     }
 
@@ -120,6 +167,7 @@ public class LazyFunction implements Serializable {
         this.args = (List<Object>) in.readObject();
         this.isBuiltInFunc = (Boolean) in.readObject();
         this._func = Utils.tmpMethod;
+        this.raw_str = (String) in.readObject();
         Utils.tmpMethod = null;
     }
 

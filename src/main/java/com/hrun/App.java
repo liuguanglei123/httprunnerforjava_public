@@ -79,7 +79,6 @@ public class App
                 String report_dir = Optional.ofNullable(argsParse.getReport_dir()).orElseGet(() ->
                         Paths.get(runner.getProject_working_directory()).resolve("reportss").toString()
                 );
-//                String report_template = "src/main/resources/" + "template.html";
                 String report_template = "template.html";
                 logger.debug("report_dir: "+report_dir);
 

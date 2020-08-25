@@ -163,7 +163,7 @@ public class LazyString extends LazyContent<String> implements Serializable, Par
         return origin_string.replace("{", "{{").replace("}", "}}");
     }
 
-    public Map parse_function_params(String params) {
+    public static Map parse_function_params(String params) {
         Map<String, Object> function_meta = new HashMap<String, Object>() {{
             put("argsList", new ArrayList<String>());
             put("kwargsMap", new HashMap<String, Object>());
@@ -188,7 +188,7 @@ public class LazyString extends LazyContent<String> implements Serializable, Par
         return function_meta;
     }
 
-    public Object parse_string_value(String str_value){
+    public static Object parse_string_value(String str_value){
         if(integer_regex_compile.matcher(str_value).matches() == true){
             Integer integernum = Integer.valueOf(str_value);
             return integernum;

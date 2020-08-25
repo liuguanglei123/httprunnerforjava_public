@@ -25,6 +25,8 @@ public class Runner {
     // 也可能是嵌套了Meta_data的List
     // 如果执行的是_run_test，那么meta_data是Meta_data类对象。
     private Object meta_datas;
+    //TODO:check it
+//    private List<Meta_data> meta_datas = new ArrayList<>();
 
     private Boolean verify;
 
@@ -72,8 +74,15 @@ public class Runner {
     }
 
     public void do_hook_actions(Hooks actions, String hook_type) {
+        // TODO:
+        //  httprunner原生支持两种格式的hook，一种是
+        //   {"var": "${func()}"}
+        //  另一种是
+        //   ${func()}
+        //  暂时只支持${func()}形式
         logger.debug(String.format("call %s hook actions.", hook_type));
 
+        this.session_context.eval_content(actions);
     }
 
     public void run_test(RunableComponent test_dict) throws Exception {
@@ -101,7 +110,6 @@ public class Runner {
                 ((Meta_data) meta_datas).setValidators(validation_results);
             }
         }
-
     }
 
     public void _run_test(Api test_dict) throws Exception {
@@ -128,9 +136,9 @@ public class Runner {
         }
         String parsed_url = Utils.build_url(base_url, url);
 
-//        Setup_hooks setup_hooks = test_dict.getSetup_hooks();
-//        if(Optional.ofNullable(setup_hooks).isPresent())
-//            this.do_hook_actions(setup_hooks,"setup");
+        SetupHooks setup_hooks = test_dict.getSetup_hooks();
+        if(Optional.ofNullable(setup_hooks).isPresent())
+            this.do_hook_actions(setup_hooks,"setup");
 
         String method = "";
         try {
@@ -171,13 +179,13 @@ public class Runner {
         }
         ResponseObject resp_obj = new ResponseObject(resp);
 
-        /*//# teardown hooks
-        Teardown_hooks teardown_hooks = test_dict.getTeardown_hooks();
+        // teardown hooks
+        TeardownHooks teardown_hooks = test_dict.getTeardown_hooks();
         if(Optional.ofNullable(teardown_hooks).isPresent()) {
             //TODO:要把resp_obj对象更新在session_context中，方便后续引用该response对象
 //            this.session_context.update_test_variables("response", resp_obj);
             this.do_hook_actions(teardown_hooks, "teardown");
-        }*/
+        }
 
         // extract
         Extract extractors = test_dict.getExtract();
@@ -224,7 +232,6 @@ public class Runner {
     }
 
     public void _run_testcase(TestCase testcase_dict) throws Exception {
-        this.meta_datas = new ArrayList<Object>();
         Config config = Optional.ofNullable(testcase_dict.getConfig()).orElse(new Config());
 
         // each teststeps in one tstcase (YAML/JSON) share the same sessieon.

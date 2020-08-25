@@ -60,11 +60,15 @@ public class TestCase implements RunableComponent, Serializable {
     @JSONField(ordinal=10)
     private Extract extract;
 
+    private SetupHooks setup_hooks;
+
+    private TeardownHooks teardown_hooks;
+
     public TestCase(){
     }
 
     /**
-     * 造函数一： 用于在testsuite文件中，加载testcase节点
+     * 造函数一： 用于在testsuite/testcase文件中，加载嵌套的testcase节点
      * @param testCaseName testcase的name
      * @param raw_testcase 原始testcase内容，这里的testcase是testsuite文件中的某个testcase节点内容
      */
@@ -87,15 +91,18 @@ public class TestCase implements RunableComponent, Serializable {
                 v -> this.parameters = new Parameters((Map)raw_testcase.get("parameters"))
         );
 
+        Optional.ofNullable(raw_testcase.get("extract")).map(
+                h -> this.extract = new Extract((List)raw_testcase.get("extract"))
+        );
 
-        //REMARK：TestSuite文件中不支持extract export等内容，所以以下内容被注释掉了
-        /* Optional.ofNullable(raw_testcase.get("extract")).map(
-                v -> {
-                    if(Utils.checkIsList(v))
-                        this.extract = new Extract((Map)raw_testcase.get("extract"));
-                }
-        );*/
         //TODO:还需要加载setup_hooks和teardown_hooks
+        Optional.ofNullable(raw_testcase.get("setup_hooks")).map(
+                h -> this.setup_hooks = new SetupHooks((List)raw_testcase.get("setup_hooks"))
+        );
+
+        Optional.ofNullable(raw_testcase.get("teardown_hooks")).map(
+                h -> this.teardown_hooks = new TeardownHooks((List)raw_testcase.get("teardown_hooks"))
+        );
     }
 
     /**
@@ -110,12 +117,10 @@ public class TestCase implements RunableComponent, Serializable {
                 HrunExceptionFactory.create("E0016");
             if(((Map<String,Object>)fileContent.get(i)).containsKey("config")) {
                 this.config = new Config((Map) (((Map<String, Object>) fileContent.get(i)).get("config")));
-                continue;
             }
             else if(((Map<String,Object>)fileContent.get(i)).containsKey("test")) {
                 Map tmp = (Map<String, Object>) ((Map<String, Object>) fileContent.get(i)).get("test");
                 this.testSteps.add(Loader.load_teststep(tmp));
-                continue;
             }
             else
                 logger.error("unexpected block key: block key should only be 'config' or 'test'.");
@@ -127,6 +132,7 @@ public class TestCase implements RunableComponent, Serializable {
      * 构造函数三：用于加载testcase文件中嵌套的testcase
      * @param raw_testcase 原始testcase内容
      */
+    @Deprecated
     public TestCase(Map raw_testcase){
         if (Optional.ofNullable(raw_testcase.get("name")).isPresent()) {
             this.name = new LazyString((String) raw_testcase.get("name"));
@@ -137,7 +143,7 @@ public class TestCase implements RunableComponent, Serializable {
         );
 
         TODO:Optional.ofNullable(raw_testcase.get("extract")).map(
-                h -> this.extract = new Extract((List)raw_testcase.get("extract"), false)
+                h -> this.extract = new Extract((List)raw_testcase.get("extract"))
         );
 
         this.testCase_def = new TestCase((String)raw_testcase.get("testcase"));

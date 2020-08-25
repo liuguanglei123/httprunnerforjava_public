@@ -62,6 +62,8 @@ public class Config implements Serializable, Parseable {
         Optional.ofNullable(raw_config.get("verify")).map(h -> this.verify = (Boolean) raw_config.get("verify"));
         Optional.ofNullable(raw_config.get("variables")).map(h -> this.variables = new Variables((Map) h));
         Optional.ofNullable(raw_config.get("export")).map(o -> this.export = new Export((List) o));
+        Optional.ofNullable(raw_config.get("setup_hooks")).map(o -> this.setup_hooks = new SetupHooks((List) o));
+        Optional.ofNullable(raw_config.get("teardown_hooks")).map(o -> this.teardown_hooks = new TeardownHooks((List) o));
     }
 
     /**
@@ -99,7 +101,7 @@ public class Config implements Serializable, Parseable {
      * @return
      */
     public Config parse_config(ProjectMapping project_mapping,Set<String> session_variables_set){
-        Config prepared_config = Utils.deepcopy_dict(this);
+        Config prepared_config = Utils.deepcopy_obj(this);
         if(prepared_config.getVariables() == null)
             prepared_config.setVariables(new Variables());
 

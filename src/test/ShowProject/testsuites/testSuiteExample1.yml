@@ -1,8 +1,14 @@
 config:
   name: suiteExample1
+#  setup_hooks:
+#    - ${setup_hooks()}
+#    - ${setup_testsuite()}
+#  teardown_hooks:
+#    - ${teardown_hooks()}
+#    - ${teardown_testsuite()}
 
 testcases:
   singleApi:
     testcase: testcases/testCaseExample1.yml
     parameters:
-      type: ["movie","tv"]
+      type: ["movie"]

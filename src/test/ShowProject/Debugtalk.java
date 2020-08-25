@@ -17,8 +17,12 @@ public class Debugtalk {
     public void setup_testcase(){
         System.out.println("setup_testcase execute");
     }
-    public void teardown_hooks(){
-        System.out.println("teardown_hooks execute");
+//    public void teardown_hooks(){
+//        System.out.println("teardown_hooks execute");
+//    }
+    public void teardown_hooks(String type){
+        System.out.println("teardown_hooks execute with simple parameter");
+        System.out.println("the type is " + type);
     }
     public void func2(){
         System.out.println("func2 execute");

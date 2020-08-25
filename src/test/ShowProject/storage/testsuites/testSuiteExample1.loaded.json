@@ -22,8 +22,7 @@
 					"parameters":{
 						"parameters":{
 							"type":[
-								"movie",
-								"tv"
+								"movie"
 							]
 						},
 						"raw_parameters":{}
@@ -46,6 +45,18 @@
 							{
 								"name":{
 									"realValue":"searchTagsMovie"
+								},
+								"variables":{
+									"empty":false,
+									"size":1,
+									"variables":{
+										"type":{
+											"realValue":"tv"
+										}
+									}
+								},
+								"extract":{
+									"extract":{}
 								},
 								"api_def":{
 									"request":{
@@ -93,6 +104,27 @@
 												]
 											}
 										]
+									},
+									"setup_hooks":{
+										"empty":false,
+										"setup_hooks":[
+											{
+												"args":[]
+											}
+										]
+									},
+									"teardown_hooks":{
+										"empty":false,
+										"teardown_hooks":[
+											{
+												"args":[]
+											}
+										]
+									},
+									"extract":{
+										"extract":{
+											"session_token":"content.token"
+										}
 									}
 								}
 							}

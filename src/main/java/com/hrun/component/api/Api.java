@@ -81,24 +81,22 @@ public class Api implements RunableComponent, Serializable {
                 h -> this.skip = new LazyString((String)h)
         );
 
-        /*
+
         Optional.ofNullable(raw_api.get("setup_hooks")).map(
-            h -> this.setup_hooks = new SetupHooks(h)
+            s -> this.setup_hooks = new SetupHooks((List) s)
         );
 
         Optional.ofNullable(raw_api.get("teardown_hooks")).map(
-            h -> this.teardown_hooks = new TeardownHooks(h)
-        );*/
-
+            t -> this.teardown_hooks = new TeardownHooks((List) t)
+        );
 
         Optional.ofNullable(raw_api.get("validate")).map(
                 v -> this.validate = new Validate((List)raw_api.get("validate"))
         );
 
         Optional.ofNullable(raw_api.get("extract")).map(
-                h -> this.extract = new Extract((List)raw_api.get("extract"), true)
+                h -> this.extract = new Extract((List)raw_api.get("extract"))
         );
-
 
         if(!isApiDefineFile){
             this.api_def = new Api((Map) Loader.load_file(Loader.trans2AbsolutePath((String)raw_api.get("api"))), true);
@@ -169,7 +167,17 @@ public class Api implements RunableComponent, Serializable {
         Optional.ofNullable(api_def_dict.getVerify()).ifPresent(varify -> this.setVerify(varify));
 
         // TODO: merge & override setup_hooks
+        if(this.getSetup_hooks() == null)
+            setSetup_hooks(api_def_dict.getSetup_hooks());
+        else{
+            this.getSetup_hooks().extend(api_def_dict.getSetup_hooks());
+        }
         // TODO: merge & override teardown_hooks
+        if(this.getTeardown_hooks() == null)
+            setTeardown_hooks(api_def_dict.getTeardown_hooks());
+        else{
+            this.getTeardown_hooks().extend(api_def_dict.getTeardown_hooks());
+        }
 
         // TODO: extend with other api definition items, e.g. times,skip
         Optional.ofNullable(api_def_dict.getSkip()).ifPresent(skip -> this.setSkip(skip));
