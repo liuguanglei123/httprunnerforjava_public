@@ -7,6 +7,9 @@ import ch.qos.logback.core.pattern.color.ForegroundCompositeConverterBase;
 
 public class LogbackColorful extends ForegroundCompositeConverterBase<ILoggingEvent> {
 
+    //asfasdfasdfasfasdfsdafadsfsdaf
+
+
     @Override
     protected String getForegroundColorCode(ILoggingEvent event) {
         Level level = event.getLevel();
